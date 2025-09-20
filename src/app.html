@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<title>Erenay</title>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Golos+Text:wght@400..900&display=swap"
+			rel="stylesheet"
+		/>
+		<link href="https://fonts.cdnfonts.com/css/sifonn" rel="stylesheet" />
+
+		<link
+			href="https://cdn.jsdelivr.net/npm/locomotive-scroll@latest/dist/locomotive-scroll.css"
+			rel="stylesheet"
+		/>
+		<link href="/styles/loadingBox.css" rel="stylesheet" />
+		<link
+			href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+			rel="stylesheet"
+		/>
+		<script src="
+https://cdn.jsdelivr.net/npm/termynal@0.0.4/dist/umd/termynal.min.js
+"></script>
+		<link
+			href="
+https://cdn.jsdelivr.net/npm/termynal@0.0.4/dist/style.min.css
+"
+			rel="stylesheet"
+		/>
+		<script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js"></script>
+
+		<script>
+			window.addEventListener('load', () => {
+				const scroll = new LocomotiveScroll();
+			});
+
+			document.addEventListener('visibilitychange', function () {
+				if (document.hidden) {
+					document.title = 'Where did you go? 😢';
+				} else {
+					document.title = 'Welcome back 😊';
+					setTimeout(() => {
+						document.title = 'Erenay';
+					}, 5000);
+				}
+			});
+		</script>
+		<script
+			defer
+			src="https://cloud.umami.is/script.js"
+			data-website-id="13e876e4-6839-4ffe-9cc4-aa42ac9b65b3"
+		></script>
+
+		%sveltekit.head%
+	</head>
+	<body
+		data-sveltekit-preload-data="hover"
+		class="dark bg-slate-200 dark:bg-slate-950"
+		data-scroll-container
+	>
+		<div style="display: contents">%sveltekit.body%</div>
+	</body>
+</html>

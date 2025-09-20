@@ -1,0 +1,218 @@
+@keyframes box1 {
+	0% {
+		transform: translate(100%, 0%);
+	}
+	50% {
+		transform: translate(100%, 0%);
+	}
+	100% {
+		transform: translate(200%, 0%);
+	}
+}
+
+@keyframes box2 {
+	0% {
+		transform: translate(0%, 100%);
+	}
+	50% {
+		transform: translate(0%, 0%);
+	}
+	100% {
+		transform: translate(100%, 0%);
+	}
+}
+
+@keyframes box3 {
+	0% {
+		transform: translate(100%, 100%);
+	}
+	50% {
+		transform: translate(100%, 100%);
+	}
+	100% {
+		transform: translate(100%, 100%);
+	}
+}
+
+@keyframes box4 {
+	0% {
+		transform: translate(200%, 0%);
+	}
+	50% {
+		transform: translate(200%, 100%);
+	}
+	100% {
+		transform: translate(0%, 100%);
+	}
+}
+
+.boxes-container {
+	--size: 32px;
+	--duration: 800ms;
+	height: calc(var(--size) * 2);
+	width: calc(var(--size) * 3);
+	position: relative;
+	transform-style: preserve-3d;
+	padding: 70px;
+	transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+}
+
+@media (min-width: 1024px) {
+	.boxes-container {
+		--size: 64px;
+	}
+}
+
+.box {
+	width: var(--size);
+	height: var(--size);
+	position: absolute;
+	transform-style: preserve-3d;
+	animation-duration: var(--duration);
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.box1 {
+	animation-name: box1;
+}
+.box2 {
+	animation-name: box2;
+}
+.box3 {
+	animation-name: box3;
+}
+.box4 {
+	animation-name: box4;
+}
+
+.face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.front {
+	transform: translateZ(calc(var(--size) / 2));
+}
+
+.right {
+	transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+}
+
+.top {
+	transform: rotateX(90deg) translateZ(calc(var(--size) / 2));
+}
+
+.shadow {
+	transform: translateZ(calc(var(--size) * -0.5));
+}
+
+@keyframes box-anim-1 {
+	0% {
+		transform: translate(100%, 0%);
+	}
+	50% {
+		transform: translate(100%, 0%);
+	}
+	100% {
+		transform: translate(200%, 0%);
+	}
+}
+
+@keyframes box-anim-2 {
+	0% {
+		transform: translate(0%, 100%);
+	}
+	50% {
+		transform: translate(0%, 0%);
+	}
+	100% {
+		transform: translate(100%, 0%);
+	}
+}
+
+@keyframes box-anim-3 {
+	0% {
+		transform: translate(100%, 100%);
+	}
+	50% {
+		transform: translate(100%, 100%);
+	}
+	100% {
+		transform: translate(0%, 100%);
+	}
+}
+
+@keyframes box-anim-4 {
+	0% {
+		transform: translate(200%, 0%);
+	}
+	50% {
+		transform: translate(200%, 100%);
+	}
+	100% {
+		transform: translate(100%, 100%);
+	}
+}
+.boxes-loader-container {
+	position: relative;
+	transform-style: preserve-3d;
+	transform-origin: 50% 50%;
+	padding: 70px;
+	transform: rotateX(60deg) rotateZ(45deg) rotateY(0deg) translateZ(0px);
+	perspective: 1000px;
+}
+
+.boxes-loader-box {
+	position: absolute;
+	top: 0;
+	left: 0;
+	transform-style: preserve-3d;
+	animation-duration: 800ms;
+	animation-timing-function: linear;
+	animation-iteration-count: infinite;
+}
+
+.boxes-loader-box-1 {
+	animation-name: box-anim-1;
+	transform: translate(100%, 0%);
+}
+
+.boxes-loader-box-2 {
+	animation-name: box-anim-2;
+	transform: translate(0%, 100%);
+}
+
+.boxes-loader-box-3 {
+	animation-name: box-anim-3;
+	transform: translate(100%, 100%);
+}
+
+.boxes-loader-box-4 {
+	animation-name: box-anim-4;
+	transform: translate(200%, 0%);
+}
+
+.boxes-loader-face {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	backface-visibility: hidden;
+}
+
+.boxes-loader-face-front {
+	transform: translateZ(calc(var(--size) / 2));
+}
+
+.boxes-loader-face-right {
+	transform: rotateY(90deg) translateZ(calc(var(--size) / 2));
+}
+
+.boxes-loader-face-top {
+	transform: rotateX(-90deg) translateZ(calc(var(--size) / 2));
+}
+
+.boxes-loader-face-shadow {
+	transform: translateZ(calc(var(--size) * -0.5));
+}

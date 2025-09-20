@@ -1,0 +1,33 @@
+[
+	{
+		"id": 1,
+		"title": "Cursor",
+		"link": "https://cursor.so",
+		"thumbnail": "https://aceternity.com/images/products/thumbnails/new/cursor.png"
+	},
+	{
+		"id": 2,
+		"title": "Rogue",
+		"link": "https://userogue.com",
+		"thumbnail": "https://aceternity.com/images/products/thumbnails/new/rogue.png"
+	},
+	{
+		"id": 3,
+		"title": "Rogue",
+		"link": "https://userogue.com",
+		"thumbnail": "https://aceternity.com/images/products/thumbnails/new/rogue.png"
+	},
+	{
+		"id": 4,
+		"title": "Arginels",
+		"link": "https://arginels.com",
+		"thumbnail": "/products/arginels.png"
+	},
+
+	{
+		"id": 5,
+		"title": "Editorially",
+		"link": "https://editorially.org",
+		"thumbnail": "https://aceternity.com/images/products/thumbnails/new/editorially.png"
+	}
+]
