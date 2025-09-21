@@ -1,7 +1,5 @@
 <script lang="ts">
-	import type { HTMLAttributes } from 'svelte/elements';
 	import { cn } from '$lib/utils/cn';
-	interface $$Props extends HTMLAttributes<HTMLDivElement> {}
 	let className: string | null | undefined = undefined;
 	export { className as class };
 </script>

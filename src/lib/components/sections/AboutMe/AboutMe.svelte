@@ -1,8 +1,8 @@
 <script>
-	import { Meteors } from '$lib/components/ui/Meteors';
+	import { Meteors } from '$lib/components/effects/Meteors';
 	import { Motion } from 'svelte-motion';
 	import items from './items.json';
-	import Button from '$lib/components/ui/button/button.svelte';
+	import { Button } from '$lib/components/common/Button';
 </script>
 
 <div class="relative mt-16">
@@ -19,7 +19,7 @@
 	<div
 		class="mx-8 grid grid-cols-1 items-stretch justify-center gap-8 px-4 sm:grid-cols-2 sm:gap-8 lg:mx-24 lg:grid-cols-3 lg:gap-8"
 	>
-		{#each items as item, index}
+		{#each items as item, index (index)}
 			<div class="animate-border-rotate bg-conic-border w-full rounded-lg p-px">
 				<div class="relative h-full w-full overflow-hidden rounded-lg bg-gray-900 dark:bg-gray-900">
 					<div
@@ -56,10 +56,7 @@
 						>
 							{item.description}
 						</p>
-						<Button
-							variant="outline"
-							class="mt-auto cursor-pointer rounded-lg border border-gray-400 bg-gray-50 px-3 py-1 text-sm text-gray-700 transition-opacity duration-200 hover:opacity-80 sm:px-4 sm:py-1 sm:text-base dark:border-gray-500 dark:bg-transparent dark:text-gray-300"
-						>
+						<Button variant="outline" class="border-muted dark:border-muted dark:bg-transparent">
 							{item.buttonText}
 						</Button>
 						<Meteors number={10} />

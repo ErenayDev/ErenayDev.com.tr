@@ -1,15 +1,15 @@
 <script lang="ts">
 	import '../app.css';
-	import { BackgroundBeams } from '$lib/components/ui/BackgroundBeams';
-	import { FloatingNavbar } from '$lib/components/ui/FloatingNavbar';
-	import Footer from '$lib/components/ui/Footer';
-	import PageLoader from '$lib/components/ui/loader/page-loader.svelte';
-	import LoadingProvider from '$lib/components/ui/loader/LoadingProvider.svelte';
+	import BackgroundBeams from '$lib/components/effects/BackgroundBeams/BackgroundBeams.svelte';
+	import { FloatingNavbar } from '$lib/components/layout/FloatingNavbar';
+	import Footer from '$lib/components/layout/Footer';
+	import PageLoader from '$lib/components/common/Loader/page-loader.svelte';
+	import LoadingProvider from '$lib/components/common/Loader/LoadingProvider.svelte';
 	import { IconBook2, IconCode, IconHome, IconMessageCircle } from '@tabler/icons-svelte';
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { onDestroy, onMount } from 'svelte';
 	import { clientLogger } from '$lib/logger/client';
-	import { BackTop } from '$lib/components/ui/ScrollDown';
+	import { BackTop } from '$lib/components/layout/ScrollDown';
 
 	const navItems = [
 		{ name: 'Home', link: '/', icon: IconHome, description: 'Home page' },
@@ -36,8 +36,10 @@
 		}
 	}
 
+	let unsubscribe: (() => void) | undefined;
+
 	onMount(() => {
-		const unsubscribe = page.subscribe(($page) => {
+		unsubscribe = page.subscribe(($page) => {
 			clientLogger.info(
 				{
 					route: $page.route.id,
@@ -47,7 +49,10 @@
 				`Page visited: ${$page.url.pathname}`
 			);
 		});
-		return unsubscribe;
+	});
+
+	onDestroy(() => {
+		unsubscribe?.();
 	});
 </script>
 

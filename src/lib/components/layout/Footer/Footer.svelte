@@ -7,6 +7,8 @@
 		IconBrandX,
 		IconBrandMastodon
 	} from '@tabler/icons-svelte';
+
+	import { version } from '$app/environment';
 </script>
 
 <footer class="mt-16 border-t border-gray-200 py-6 dark:border-gray-700">
@@ -90,7 +92,7 @@
 			</div>
 
 			<Copyright date={new Date()}>Erenay</Copyright>
-			<span class="text-xs text-gray-500 dark:text-gray-400"> All rights reserved. </span>
+			<span class="text-xs text-gray-500 dark:text-gray-400"> All rights reserved. v{version}</span>
 		</div>
 	</div>
 </footer>

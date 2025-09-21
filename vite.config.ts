@@ -34,27 +34,29 @@ export default defineConfig(({ mode }) => {
 
 	return {
 		plugins,
-
 		optimizeDeps: {
 			include: ['clsx', 'tailwind-merge', '@tabler/icons-svelte', 'bits-ui'],
 			esbuildOptions: {
 				target: 'es2020'
 			}
 		},
-
 		build: {
 			target: 'es2020',
 			rollupOptions: {
 				output: {
-					manualChunks: {
-						icons: ['@tabler/icons-svelte'],
-						ui: ['bits-ui'],
-						utils: ['clsx', 'tailwind-merge']
+					manualChunks: (id) => {
+						if (id.includes('@tabler/icons-svelte')) return 'icons';
+						if (id.includes('bits-ui')) return 'ui';
+						if (
+							id.includes('node_modules') &&
+							(id.includes('clsx') || id.includes('tailwind-merge'))
+						) {
+							return 'utils';
+						}
 					}
 				}
 			}
 		},
-
 		server: {
 			fs: {
 				allow: ['..']

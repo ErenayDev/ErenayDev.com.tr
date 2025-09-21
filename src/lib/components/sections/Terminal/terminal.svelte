@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { Window } from '$lib/components/ui/window';
+	import { Window } from '$lib/components/common/Window';
 	import { cn } from '$lib/utils/cn';
 	import { useTerminalRoot } from './terminal.svelte.js';
 	import { onMount } from 'svelte';

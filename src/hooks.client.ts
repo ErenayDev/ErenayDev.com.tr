@@ -1,4 +1,3 @@
-// src/hooks.client.ts
 import { clientLogger } from '$lib/logger/client';
 
 window.addEventListener('error', (event) => {

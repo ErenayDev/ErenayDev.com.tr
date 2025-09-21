@@ -10,7 +10,6 @@
 
 	let playAnimation = false;
 	let animationSpeed = 1;
-	let typingComplete = false;
 
 	const play = (speed: number) => {
 		playAnimation = true;
@@ -18,11 +17,9 @@
 	};
 
 	const handleTypingComplete = () => {
-		typingComplete = true;
-		// Typing tamamlandıktan sonra onComplete'i çağır
 		setTimeout(() => {
 			animation.callOnComplete();
-		}, 100); // Küçük bir gecikme ekleyerek sonraki animasyonun başlamasını sağla
+		}, 100);
 	};
 
 	const animation = useAnimation({ delay, play });

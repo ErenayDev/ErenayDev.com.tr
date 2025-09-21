@@ -4,7 +4,7 @@
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
 
-	import { ScrollDown } from '$lib/components/ui/ScrollDown';
+	import { ScrollDown } from '$lib/components/layout/ScrollDown';
 
 	export let className: string | undefined = undefined;
 

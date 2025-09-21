@@ -1,15 +1,29 @@
-<script>
+<script lang="ts">
 	function handleClick() {
 		document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
 	}
+
+	function handleKeydown(event: KeyboardEvent) {
+		if (event.key === 'Enter' || event.key === ' ') {
+			event.preventDefault();
+			handleClick();
+		}
+	}
 </script>
 
-<div class="scrolldown" style="--color: skyblue" on:click={handleClick}>
+<button
+	class="scrolldown"
+	style="--color: skyblue"
+	on:click={handleClick}
+	on:keydown={handleKeydown}
+	aria-label="Scroll to projects section"
+	type="button"
+>
 	<div class="chevrons">
 		<div class="chevrondown"></div>
 		<div class="chevrondown"></div>
 	</div>
-</div>
+</button>
 
 <style>
 	.scrolldown {
@@ -25,6 +39,13 @@
 		box-sizing: border-box;
 		margin-bottom: 16px;
 		cursor: pointer;
+		background: transparent;
+		padding: 0;
+	}
+
+	.scrolldown:focus {
+		outline: 2px solid var(--color);
+		outline-offset: 2px;
 	}
 
 	.scrolldown::before {
@@ -47,18 +68,15 @@
 			opacity: 0;
 			height: 6px;
 		}
-
 		40% {
 			opacity: 1;
 			height: 10px;
 		}
-
 		80% {
 			transform: translate(0, 20px);
 			height: 10px;
 			opacity: 0;
 		}
-
 		100% {
 			height: 3px;
 			opacity: 0;
@@ -98,7 +116,6 @@
 		from {
 			opacity: 0;
 		}
-
 		to {
 			opacity: 0.5;
 		}
