@@ -1,13 +1,16 @@
 <script lang="ts">
-	import { LampEffect } from '$lib/components/ui/LampEffect';
 	import { Motion } from 'svelte-motion';
 	import { writable } from 'svelte/store';
 	import { onMount } from 'svelte';
+	import { inview } from 'svelte-inview';
+	import { LampEffect } from '$lib/components/ui/LampEffect';
 	import AboutMe from '$lib/components/ui/AboutMe';
 	import Carousel from '$lib/components/ui/Carousel';
-	import products from './products.json';
+	import * as Terminal from '$lib/components/ui/Terminal';
+	import { ContactForm } from '$lib/components/ui/Contact';
+	import projects from './products.json';
 
-	const pictureSliderArray = Array.from(products).map((i) => {
+	const pictureSliderArray = Array.from(projects).map((i) => {
 		return {
 			caption: i.title,
 			alt: i.title,
@@ -17,30 +20,49 @@
 		};
 	});
 
-	const inView = writable(false);
-	let target: HTMLElement;
+	const titleInView = writable(false);
+	const svgInView = writable(false);
+	const terminalInView = writable(false);
+
+	let titleTarget: HTMLElement;
+	let svgTarget: HTMLElement;
 
 	onMount(() => {
-		const observer = new IntersectionObserver(([entry]) => inView.set(entry.isIntersecting), {
+		const titleObserver = new IntersectionObserver(
+			([entry]) => titleInView.set(entry.isIntersecting),
+			{ threshold: 0.1 }
+		);
+		const svgObserver = new IntersectionObserver(([entry]) => svgInView.set(entry.isIntersecting), {
 			threshold: 0.1
 		});
-		if (target) observer.observe(target);
-		return () => observer.disconnect();
+
+		if (titleTarget) titleObserver.observe(titleTarget);
+		if (svgTarget) svgObserver.observe(svgTarget);
+
+		return () => {
+			titleObserver.disconnect();
+			svgObserver.disconnect();
+		};
 	});
+
+	let isInView: boolean = false;
+	const options = {
+		threshold: 0.3
+	};
 </script>
 
 <LampEffect>
 	<Motion
 		let:motion
 		initial={{ opacity: 0.5, y: 100 }}
-		animate={$inView ? { opacity: 1, y: 0 } : { opacity: 0.5, y: 100 }}
+		animate={$titleInView ? { opacity: 1, y: 0 } : { opacity: 0.5, y: 100 }}
 		transition={{
 			delay: 0.3,
 			duration: 0.8,
 			ease: 'easeInOut'
 		}}
 	>
-		<div class="pb-4" bind:this={target} use:motion>
+		<div class="pb-4" bind:this={titleTarget} use:motion>
 			<h2 class="mt-8 p-4 text-center text-4xl font-medium md:text-7xl" data-scroll>
 				<span class="hero-word hero-word--blue">Hello,</span>
 				<span class="hero-word hero-word--amber">I'm</span>
@@ -48,7 +70,23 @@
 				<span class="hero-word hero-word--violet">Erenay ✨</span>
 			</h2>
 		</div>
-		<div bind:this={target} use:motion class="absolute top-1/2 right-0 -translate-y-1/2">
+	</Motion>
+
+	<Motion
+		let:motion
+		initial={{ opacity: 0, x: 100 }}
+		animate={$svgInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 100 }}
+		transition={{
+			delay: 0.5,
+			duration: 0.8,
+			ease: 'easeInOut'
+		}}
+	>
+		<div
+			bind:this={svgTarget}
+			use:motion
+			class="absolute top-1/2 bottom-9 left-120 hidden -translate-y-1/2 lg:block"
+		>
 			<svg
 				version="1.1"
 				xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +105,7 @@
 	</Motion>
 </LampEffect>
 
-<div class="relative" id="products">
+<div class="relative" id="projects">
 	<div class="container">
 		<Motion
 			initial={{ x: -100, opacity: 0 }}
@@ -79,7 +117,6 @@
 				These are <br /> my projects
 			</h2>
 		</Motion>
-
 		<Motion
 			initial={{ x: -100, opacity: 0 }}
 			animate={{ x: 0, opacity: 1 }}
@@ -93,4 +130,69 @@
 	</div>
 	<Carousel imageArray={pictureSliderArray} />
 </div>
+
 <AboutMe />
+
+<div
+	class="flex min-h-screen items-center justify-center py-12"
+	use:inview={options}
+	on:inview_enter={(event) => {
+		terminalInView.set(true);
+		isInView = true;
+	}}
+>
+	{#if $terminalInView}
+		<Terminal.Root class="border-muted w-full max-w-4xl bg-slate-950 " delay={250}>
+			<Terminal.TypingAnimation>&gt; whoami</Terminal.TypingAnimation>
+			<Terminal.AnimatedSpan delay={1500} class="text-blue-400">
+				<span>erenay</span>
+			</Terminal.AnimatedSpan>
+
+			<Terminal.TypingAnimation delay={2500}>&gt; cat skills.json</Terminal.TypingAnimation>
+			<Terminal.Loading delay={3500}></Terminal.Loading>
+			<Terminal.AnimatedSpan delay={4750} class="font-mono whitespace-pre-line text-cyan-300">
+				<span
+					>{`{
+  "frontend": ["Svelte/Kit", "React/Next.js", "TypeScript"],
+  "backend": ["Node.js", "REST APIs", "Database Design"],
+  "devops": ["Docker", "Server Deployment", "Linux Ecosystem"],
+  "learning": ["Rust"],
+  "tools": ["Git", "Zed", "Terminal Ninja 🥷"]
+}`}</span
+				>
+			</Terminal.AnimatedSpan>
+
+			<Terminal.TypingAnimation delay={6000}>&gt; npm run build-career</Terminal.TypingAnimation>
+			<Terminal.Loading delay={7000}>
+				<span slot="loadingMessage">Compiling experience</span>
+				<span slot="completeMessage" class="text-green-500"> ✔ Career compiled successfully </span>
+			</Terminal.Loading>
+			<Terminal.AnimatedSpan delay={8250} class="text-yellow-400">
+				<span>🚀 Ready to build amazing products with modern tech stack</span>
+			</Terminal.AnimatedSpan>
+
+			<Terminal.TypingAnimation delay={9250}>&gt; git status</Terminal.TypingAnimation>
+			<Terminal.AnimatedSpan delay={10250} class="text-green-400">
+				<span>On branch: main</span>
+			</Terminal.AnimatedSpan>
+			<Terminal.AnimatedSpan delay={10750} class="text-green-400">
+				<span>Your branch is ahead of 'yesterday' by 1 commit</span>
+			</Terminal.AnimatedSpan>
+			<Terminal.AnimatedSpan delay={11250} class="text-white">
+				<span> modified: skills.js</span>
+			</Terminal.AnimatedSpan>
+			<Terminal.AnimatedSpan delay={11750} class="text-white">
+				<span> new file: awesome-project.svelte</span>
+			</Terminal.AnimatedSpan>
+
+			<Terminal.TypingAnimation delay={12500}>
+				&gt; echo "Let's build something amazing together! 💫"
+			</Terminal.TypingAnimation>
+			<Terminal.Loading delay={15000} duration={500}></Terminal.Loading>
+			<Terminal.AnimatedSpan delay={15500} class="text-purple-400">
+				<span>Let's build something amazing together! 💫</span>
+			</Terminal.AnimatedSpan>
+		</Terminal.Root>
+	{/if}
+</div>
+<ContactForm />

@@ -20,13 +20,13 @@
 		description: string;
 		icon?: ComponentType;
 	}[];
-
 	export let className: string | undefined = undefined;
+	export let handleProjects: () => void;
+	export let handleContant: () => void;
 
 	const { scrollYProgress } = useViewportScroll();
 	let visible = false;
 
-	/* eslint-disable */
 	$: {
 		$scrollYProgress;
 		updateDirection();
@@ -38,6 +38,17 @@
 			visible = true;
 		} else {
 			visible = direction < 0;
+		}
+	}
+
+	function handleNavClick(event: MouseEvent, link: string) {
+		if (link === '/#projects') {
+			event.preventDefault();
+			handleProjects();
+		}
+		if (link === '/#contactForm') {
+			event.preventDefault();
+			handleContant();
 		}
 	}
 
@@ -66,6 +77,7 @@
 					<Tooltip.Trigger>
 						<a
 							href={navItem.link}
+							on:click={(e) => handleNavClick(e, navItem.link)}
 							class={cn(
 								'text-foreground relative flex items-center space-x-1',
 								'px-4 py-2 transition-all duration-200 hover:rounded-full hover:ring hover:ring-neutral-200 hover:dark:text-white hover:dark:ring-white/[0.2]',

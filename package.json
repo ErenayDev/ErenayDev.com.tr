@@ -27,13 +27,15 @@
     "prettier-plugin-tailwindcss": "^0.6.14",
     "sass-embedded": "^1.92.1",
     "svelte": "^4.2.7",
-    "svelte-check": "^4.0.0",
+    "svelte-check": "^4.3.1",
     "svelte-copyright": "^2.1.0",
     "tw-animate-css": "^1.3.7",
     "typescript": "^5.0.0",
     "typescript-eslint": "^8.0.0",
     "vite": "^5.0.3",
-    "vite-plugin-devtools-json": "^1.0.0"
+    "vite-bundle-analyzer": "^1.2.3",
+    "vite-plugin-devtools-json": "^1.0.0",
+    "vite-plugin-inspect": "^11.3.3"
   },
   "type": "module",
   "dependencies": {
@@ -51,6 +53,7 @@
     "svelte-inview": "^4.0.4",
     "svelte-motion": "^0.12.2",
     "tailwind-merge": "^3.3.1",
+    "tailwind-variants": "^3.1.1",
     "tailwindcss": "^4.1.12"
   },
   "trustedDependencies": [

@@ -1,4 +1,3 @@
-<!-- src/routes/+layout.svelte -->
 <script lang="ts">
 	import '../app.css';
 	import { BackgroundBeams } from '$lib/components/ui/BackgroundBeams';
@@ -14,10 +13,28 @@
 
 	const navItems = [
 		{ name: 'Home', link: '/', icon: IconHome, description: 'Home page' },
-		{ name: 'Projects', link: '#projects', icon: IconCode, description: 'Projects page' },
+		{ name: 'Projects', link: '/#projects', icon: IconCode, description: 'Projects page' },
 		{ name: 'Blog', link: '/blog', icon: IconBook2, description: 'Blog page' },
-		{ name: 'Contact', link: '#contact', icon: IconMessageCircle, description: 'Contact page' }
+		{ name: 'Contact', link: '/#contactForm', icon: IconMessageCircle, description: 'Contact page' }
 	];
+
+	function handleProjects() {
+		const path = window.location.pathname;
+		if (path === '/') {
+			document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
+		} else {
+			window.location.href = '/#projects';
+		}
+	}
+
+	function handleContant() {
+		const path = window.location.pathname;
+		if (path === '/') {
+			document.getElementById('contantForm')?.scrollIntoView({ behavior: 'smooth' });
+		} else {
+			window.location.href = '/#contantForm';
+		}
+	}
 
 	onMount(() => {
 		const unsubscribe = page.subscribe(($page) => {
@@ -30,14 +47,13 @@
 				`Page visited: ${$page.url.pathname}`
 			);
 		});
-
 		return unsubscribe;
 	});
 </script>
 
 <LoadingProvider>
 	<div class="relative flex min-h-screen w-full flex-col items-center justify-center antialiased">
-		<FloatingNavbar {navItems} />
+		<FloatingNavbar {navItems} {handleProjects} {handleContant} />
 		<div class="pointer-events-none absolute inset-0 z-11">
 			<BackgroundBeams />
 		</div>

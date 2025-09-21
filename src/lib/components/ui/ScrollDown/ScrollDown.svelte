@@ -1,6 +1,6 @@
 <script>
 	function handleClick() {
-		document.getElementById('products')?.scrollIntoView({ behavior: 'smooth' });
+		document.getElementById('projects')?.scrollIntoView({ behavior: 'smooth' });
 	}
 </script>
 

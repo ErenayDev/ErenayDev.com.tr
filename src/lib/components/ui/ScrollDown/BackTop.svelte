@@ -1,12 +1,43 @@
 <script>
-	import { IconArrowUp } from '@tabler/icons-svelte';
+	import { onMount } from 'svelte';
+	import { tweened } from 'svelte/motion';
+	import { cubicOut } from 'svelte/easing';
+
+	let scrollY = 0;
+	let innerHeight = 0;
+
+	const opacity = tweened(0, {
+		duration: 300,
+		easing: cubicOut
+	});
+
+	const translateY = tweened(20, {
+		duration: 300,
+		easing: cubicOut
+	});
+
+	$: if (scrollY > innerHeight * 0.1) {
+		opacity.set(1);
+		translateY.set(0);
+	} else {
+		opacity.set(0);
+		translateY.set(20);
+	}
 
 	function handleClick() {
 		document.getElementById('top')?.scrollIntoView({ behavior: 'smooth' });
 	}
 </script>
 
-<div class="fixed right-5 bottom-5" on:click={handleClick}>
+<svelte:window bind:scrollY bind:innerHeight />
+
+<div
+	class="fixed right-5 bottom-5 z-11"
+	on:click={handleClick}
+	style="opacity: {$opacity}; transform: translateY({$translateY}px); pointer-events: {$opacity > 0
+		? 'auto'
+		: 'none'};"
+>
 	<button class="button">
 		<svg class="svgIcon" viewBox="0 0 384 512">
 			<path
@@ -52,7 +83,7 @@
 	}
 
 	.button:hover .svgIcon {
-		/* width: 20px; */
+		width: 20px;
 		transition-duration: 0.3s;
 		transform: translateY(-200%);
 	}

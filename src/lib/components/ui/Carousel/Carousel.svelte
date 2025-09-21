@@ -20,7 +20,6 @@
 		movedBy = 0,
 		startPos = 0,
 		isDragging = false,
-		isHoveringImage = false,
 		dragStartTime = 0,
 		rafId = null,
 		lastMoveTime = 0,
@@ -28,9 +27,7 @@
 		lastPosition = 0,
 		isAnimating = false,
 		autoplayInterval = null,
-		isAutoplayPaused = false,
-		hoverTimer = null,
-		currentHoveredImageIndex = null;
+		isAutoplayPaused = false;
 
 	const MINIMUM_AMOUNT_OF_IMAGES = 5;
 	const numberOfSlides = imageArray.length;
@@ -39,7 +36,6 @@
 	const VELOCITY_THRESHOLD = 0.8;
 	const MAX_DRAG_RATIO = 1.5;
 	const AUTOPLAY_INTERVAL = 2000;
-	const HOVER_DELAY = 500;
 
 	const graph = (x) => -((x * x - 36) / 18) - 2;
 	const derivation = (x) => -x / 9;
@@ -47,9 +43,8 @@
 
 	function startAutoplay() {
 		if (autoplayInterval || isAutoplayPaused) return;
-
 		autoplayInterval = setInterval(() => {
-			if (!isDragging && !isHoveringImage && !isAnimating) {
+			if (!isDragging && !isAnimating) {
 				updateCurrentIndex(1);
 			}
 		}, AUTOPLAY_INTERVAL);
@@ -70,19 +65,6 @@
 	function resumeAutoplay() {
 		isAutoplayPaused = false;
 		startAutoplay();
-	}
-
-	function findNearestDirection(mouseX) {
-		const containerCenter = vw / 2;
-		const distanceFromCenter = mouseX - containerCenter;
-		return distanceFromCenter > 0 ? 1 : -1;
-	}
-
-	function clearHoverTimer() {
-		if (hoverTimer) {
-			clearTimeout(hoverTimer);
-			hoverTimer = null;
-		}
 	}
 
 	function setSliderPosition() {
@@ -194,7 +176,6 @@
 	onDestroy(() => {
 		resizeObserver?.unobserve(document.documentElement);
 		stopAutoplay();
-		clearHoverTimer();
 
 		if (rafId) {
 			cancelAnimationFrame(rafId);
@@ -213,8 +194,6 @@
 		velocity = 0;
 		dragStartTime = Date.now();
 		lastMoveTime = performance.now();
-
-		clearHoverTimer();
 		pauseAutoplay();
 	}
 
@@ -223,6 +202,7 @@
 
 		const dragDuration = Date.now() - dragStartTime;
 		let ratio = movedBy / slideWidth;
+
 		isDragging = false;
 
 		const hasSignificantVelocity = Math.abs(velocity) > VELOCITY_THRESHOLD;
@@ -237,10 +217,7 @@
 		}
 
 		movedBy = 0;
-
-		if (!isHoveringImage) {
-			resumeAutoplay();
-		}
+		resumeAutoplay();
 	}
 
 	function handleMove(event) {
@@ -279,48 +256,13 @@
 	}
 
 	function handlePrevious() {
-		clearHoverTimer();
 		pauseAutoplay();
 		updateCurrentIndex(-1);
 	}
 
 	function handleNext() {
-		clearHoverTimer();
 		pauseAutoplay();
 		updateCurrentIndex(1);
-	}
-
-	function handleImageMouseEnter(event, imageIndex) {
-		if (isDragging || isAnimating) return;
-
-		if (currentHoveredImageIndex === imageIndex) return;
-
-		clearHoverTimer();
-		currentHoveredImageIndex = imageIndex;
-		isHoveringImage = true;
-		pauseAutoplay();
-
-		hoverTimer = setTimeout(() => {
-			if (currentHoveredImageIndex === imageIndex && !isDragging && !isAnimating) {
-				const mouseX = event.clientX;
-				const direction = findNearestDirection(mouseX);
-				updateCurrentIndex(direction);
-			}
-		}, HOVER_DELAY);
-	}
-
-	function handleImageMouseLeave() {
-		clearHoverTimer();
-		currentHoveredImageIndex = null;
-		isHoveringImage = false;
-
-		if (!isDragging) {
-			resumeAutoplay();
-		}
-
-		if (isDragging) {
-			grabEndHandler();
-		}
 	}
 
 	function handleImageClick(event, index) {
@@ -335,10 +277,6 @@
 	}
 
 	function handleContainerMouseLeave() {
-		clearHoverTimer();
-		currentHoveredImageIndex = null;
-		isHoveringImage = false;
-
 		if (!isDragging) {
 			resumeAutoplay();
 		}
@@ -346,7 +284,7 @@
 </script>
 
 <div
-	class="relative top-0 left-0 z-0 flex h-screen w-screen items-center justify-center overflow-hidden transition-transform duration-500 ease-out"
+	class="relative top-0 left-0 z-0 flex h-screen w-screen items-center justify-center overflow-hidden pb-4 transition-transform duration-500 ease-out"
 	bind:clientWidth={vw}
 	bind:clientHeight={vh}
 	bind:this={sliderContainer}
@@ -399,8 +337,6 @@
 							role="button"
 							tabindex="0"
 							aria-label="Drag to navigate carousel or click to open link"
-							on:mouseenter={(e) => handleImageMouseEnter(e, index)}
-							on:mouseleave={handleImageMouseLeave}
 							on:click={(e) => handleImageClick(e, index)}
 							on:touchstart={grabStartHandler}
 							on:touchend={grabEndHandler}

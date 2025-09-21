@@ -1,23 +1,32 @@
 [
 	{
-		"title": "Merhaba",
-		"description": "deneme 123",
+		"title": "Svelte(Kit)",
+		"description": "I know how to build Svelte projects for development and production",
 		"buttonText": "Explore"
 	},
 	{
-		"title": "Merhaba",
-		"description": "deneme 123",
+		"title": "JavaScript / TypeScript",
+		"description": "I know how to create CLI tools, scripts, and web applications with TypeScript",
 		"buttonText": "Explore"
 	},
 	{
-		"title": "Merhaba",
-		"description": "deneme 123",
+		"title": "React / Next.js",
+		"description": "I specialize in building production-ready websites with React and Next.js",
 		"buttonText": "Explore"
 	},
-
 	{
-		"title": "Merhaba",
-		"description": "deneme 123",
+		"title": "Rust",
+		"description": "I am currently learning Rust, though I'm still at the beginner level",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "DevOps & Infrastructure",
+		"description": "I have experience with Docker containerization, server deployment, and infrastructure management",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "Git & Version Control",
+		"description": "I'm proficient with Git workflows, branching strategies, and collaborative development practices",
 		"buttonText": "Explore"
 	}
 ]
