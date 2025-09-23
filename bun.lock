@@ -20,7 +20,7 @@
         "svelte-motion": "^0.12.2",
         "tailwind-merge": "^3.3.1",
         "tailwind-variants": "^3.1.1",
-        "tailwindcss": "^4.1.12",
+        "tailwindcss": "^4.1.13",
       },
       "devDependencies": {
         "@axiomhq/pino": "^1.3.1",
