@@ -48,7 +48,7 @@
 			<div class="flex items-center space-x-4">
 				<a
 					href="mailto:erenaydev@proton.me"
-					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-all duration-300 ease-in-out hover:bg-black text-black hover:text-white"
 					aria-label="Email"
 				>
 					<IconMail size={20} data-cursor={false} />
@@ -57,7 +57,7 @@
 					href="https://github.com/ErenayDev"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-all duration-300 ease-in-out hover:bg-black text-black hover:text-white"
 					aria-label="GitHub"
 				>
 					<IconBrandGithub size={20} data-cursor={false} />
@@ -66,7 +66,7 @@
 					href="https://instagram.com/erenaydev"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-all duration-300 ease-in-out hover:bg-black text-black hover:text-white"
 					aria-label="LinkedIn"
 				>
 					<IconBrandInstagram size={20} data-cursor={false} />
@@ -75,7 +75,7 @@
 					href="https://x.com/erenaydev"
 					target="_blank"
 					rel="noopener noreferrer"
-					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-all duration-300 ease-in-out hover:bg-black text-black hover:text-white"
 					aria-label="X (Formerly Twitter)"
 				>
 					<IconBrandX size={20} data-cursor={false} />
@@ -84,7 +84,7 @@
 					href="https://mastodon.social/@erenaydev"
 					target="_blank"
 					rel="noopener noreferrer me"
-					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
+					class="flex h-9 w-9 items-center justify-center rounded-full bg-white transition-all duration-300 ease-in-out hover:bg-black text-black hover:text-white"
 					aria-label="Mastodon"
 				>
 					<IconBrandMastodon size={20} data-cursor={false} />

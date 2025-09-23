@@ -138,7 +138,7 @@
 	<AboutMe />
 </section>
 
-<div class="my-24 min-h-screen">
+<div class="my-24">
 	<div class="mb-8 flex justify-center">
 		<Motion
 			initial={{ x: -100, opacity: 0 }}

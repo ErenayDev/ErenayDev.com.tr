@@ -359,7 +359,7 @@
 					{#if currentActive || currentActive === 0}
 						{#key currentActive}
 							<a
-								class="absolute inline-block rounded-xl bg-white/90 px-3 py-1 text-center text-[clamp(1rem,1rem+2.2vw,2.6rem)] leading-[0.85] text-blue-600 no-underline backdrop-blur-sm transition-all duration-200 ease-out hover:bg-white hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+								class="absolute inline-block rounded-xl px-3 py-1 text-center text-[clamp(1rem,1rem+2.2vw,2.6rem)] leading-[0.85] text-blue-600 no-underline backdrop-blur-sm transition-all duration-200 ease-out hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
 								href={imageArray[currentActive].href}
 								target="_blank"
 								rel="noopener noreferrer"

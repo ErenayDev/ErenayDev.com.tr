@@ -1,12 +1,12 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
-import tailwindcss from '@tailwindcss/vite';
 import devtoolsJson from 'vite-plugin-devtools-json';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig(({ mode }) => {
 	const plugins = [
-		sveltekit(),
 		tailwindcss(),
+		sveltekit(),
 		devtoolsJson({
 			projectRoot: './src/'
 		})
