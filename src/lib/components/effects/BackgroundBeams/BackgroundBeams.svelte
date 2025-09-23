@@ -23,14 +23,16 @@
 		private frameCount: number = 0;
 		private fpsTime: number = 0;
 		private currentFPS: number = 0;
-		private resizeObserver: ResizeObserver;
+		private resizeObserver!: ResizeObserver;
 		private isDestroyed: boolean = false;
+		private fpsLogInterval: number = 0;
 
 		constructor(canvas: HTMLCanvasElement) {
 			this.canvas = canvas;
 			this.ctx = canvas.getContext('2d')!;
 			this.setupCanvas();
 			this.initializeMeteors();
+			this.startFPSLogging();
 		}
 
 		private setupCanvas(): void {
@@ -42,7 +44,6 @@
 
 				this.canvas.width = rect.width * dpr;
 				this.canvas.height = rect.height * dpr;
-
 				this.ctx.scale(dpr, dpr);
 				this.canvas.style.width = rect.width + 'px';
 				this.canvas.style.height = rect.height + 'px';
@@ -59,9 +60,18 @@
 			this.resizeObserver.observe(this.canvas.parentElement || this.canvas);
 		}
 
+		private startFPSLogging(): void {
+			this.fpsLogInterval = window.setInterval(() => {
+				if (!this.isDestroyed) {
+					console.log(`FPS: ${this.currentFPS}`);
+				}
+			}, 1000);
+		}
+
 		private initializeMeteors(): void {
 			const meteorCount = 12;
 			this.meteors = [];
+
 			for (let i = 0; i < meteorCount; i++) {
 				this.meteors.push(this.createMeteor());
 			}
@@ -80,6 +90,7 @@
 
 		private createMeteor(): Meteor {
 			const canvasWidth = this.canvas.width / (window.devicePixelRatio || 1);
+
 			return {
 				x: Math.random() * canvasWidth,
 				y: -50,
@@ -132,6 +143,7 @@
 			this.ctx.strokeStyle = gradient;
 			this.ctx.lineWidth = 2;
 			this.ctx.lineCap = 'round';
+
 			this.ctx.beginPath();
 			this.ctx.moveTo(meteor.x, meteor.y);
 			this.ctx.lineTo(
@@ -153,6 +165,7 @@
 
 		private updateFPS(currentTime: number): void {
 			this.frameCount++;
+
 			if (currentTime - this.fpsTime >= 1000) {
 				this.currentFPS = Math.round((this.frameCount * 1000) / (currentTime - this.fpsTime));
 				this.frameCount = 0;
@@ -189,11 +202,17 @@
 
 		public stop(): void {
 			this.isDestroyed = true;
+
 			if (this.animationId) {
 				cancelAnimationFrame(this.animationId);
 			}
+
 			if (this.resizeObserver) {
 				this.resizeObserver.disconnect();
+			}
+
+			if (this.fpsLogInterval) {
+				clearInterval(this.fpsLogInterval);
 			}
 		}
 	}

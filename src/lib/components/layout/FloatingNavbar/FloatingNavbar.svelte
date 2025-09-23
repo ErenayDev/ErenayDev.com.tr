@@ -27,13 +27,11 @@
 	const { scrollYProgress } = useViewportScroll();
 	let visible = false;
 
-	$: {
-		$scrollYProgress;
-		updateDirection();
-	}
+	$: updateDirection($scrollYProgress);
 
-	function updateDirection() {
-		let direction = $scrollYProgress - scrollYProgress.getPrevious();
+	function updateDirection(currentProgress: number) {
+		const direction = currentProgress - scrollYProgress.getPrevious();
+
 		if (scrollYProgress.get() < 0.05) {
 			visible = true;
 		} else {
@@ -178,8 +176,10 @@
 									'hover:ring hover:ring-neutral-200 dark:hover:ring-white/[0.2]',
 									'after:absolute after:inset-x-0 after:bottom-1 after:mx-auto after:h-px after:w-1/2 after:bg-gradient-to-r after:from-transparent after:via-blue-500 after:to-transparent after:opacity-0 after:transition-opacity after:duration-300',
 									'hover:after:opacity-100'
-								)}>Another option</DropdownMenu.Item
+								)}
 							>
+								Another option
+							</DropdownMenu.Item>
 						</DropdownMenu.Content>
 					</DropdownMenu.Root>
 				</Tooltip.Trigger>

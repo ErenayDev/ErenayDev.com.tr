@@ -3,7 +3,7 @@
 	import {
 		IconBrandGithub,
 		IconMail,
-		IconBrandLinkedin,
+		IconBrandInstagram,
 		IconBrandX,
 		IconBrandMastodon
 	} from '@tabler/icons-svelte';
@@ -54,7 +54,7 @@
 					<IconMail size={20} data-cursor={false} />
 				</a>
 				<a
-					href="https://github.com/ErenayFC"
+					href="https://github.com/ErenayDev"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
@@ -63,16 +63,16 @@
 					<IconBrandGithub size={20} data-cursor={false} />
 				</a>
 				<a
-					href="https://linkedin.com/in/erenayfc"
+					href="https://instagram.com/erenaydev"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"
 					aria-label="LinkedIn"
 				>
-					<IconBrandLinkedin size={20} data-cursor={false} />
+					<IconBrandInstagram size={20} data-cursor={false} />
 				</a>
 				<a
-					href="https://x.com/_erenay_09"
+					href="https://x.com/erenaydev"
 					target="_blank"
 					rel="noopener noreferrer"
 					class="text-gray-500 transition-colors hover:text-blue-600 dark:text-gray-400 dark:hover:text-blue-400"

@@ -62,7 +62,7 @@
 		<div class="pointer-events-none absolute inset-0 z-11">
 			<BackgroundBeams />
 		</div>
-		<main data-scroll-section id="top">
+		<main id="top">
 			<slot />
 			<BackTop />
 		</main>

@@ -239,6 +239,7 @@
 			'rlig' 1,
 			'calt' 1;
 		font-family: var(--font-sans);
+		overflow-x: hidden;
 	}
 
 	::-webkit-scrollbar {

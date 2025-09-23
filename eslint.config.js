@@ -2,9 +2,10 @@ import eslint from '@eslint/js';
 import prettier from 'eslint-config-prettier';
 import svelte from 'eslint-plugin-svelte';
 import globals from 'globals';
+import { defineConfig } from 'eslint/config';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
+export default defineConfig(
 	eslint.configs.recommended,
 	...tseslint.configs.recommended,
 	...svelte.configs['flat/recommended'],
@@ -19,6 +20,14 @@ export default tseslint.config(
 		}
 	},
 	{
+		files: ['**/*.{ts,js,svelte}'],
+		rules: {
+			'@typescript-eslint/no-explicit-any': 'off',
+			'@typescript-eslint/no-unsafe-function-type': 'off',
+			'@typescript-eslint/no-unused-vars': ['warn', { argsIgnorePattern: '^_' }]
+		}
+	},
+	{
 		files: ['**/*.svelte'],
 		languageOptions: {
 			parserOptions: {
@@ -27,6 +36,6 @@ export default tseslint.config(
 		}
 	},
 	{
-		ignores: ['build/', '.svelte-kit/', 'dist/']
+		ignores: ['build/', '.svelte-kit/', 'dist/', 'node_modules/']
 	}
 );
