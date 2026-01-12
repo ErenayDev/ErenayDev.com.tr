@@ -29,7 +29,7 @@
 		autoplayInterval = null,
 		isAutoplayPaused = false;
 
-	const MINIMUM_AMOUNT_OF_IMAGES = 5;
+	const MINIMUM_AMOUNT_OF_IMAGES = 2;
 	const numberOfSlides = imageArray.length;
 	const RAF_THROTTLE = 16.67;
 	const DRAG_THRESHOLD = 0.3;
@@ -69,7 +69,6 @@
 
 	function setSliderPosition() {
 		if (rafId) return;
-
 		rafId = requestAnimationFrame(() => {
 			const newOrderArray =
 				currentIndex > 0
@@ -114,15 +113,15 @@
 
 		function positionSlideWithoutTransition(currentSlide, newPosition) {
 			if (!currentSlide?.slide) return;
-
 			const slide = currentSlide.slide;
+
 			slide.classList.add('notransition');
 			slide.style.visibility = 'hidden';
 
 			const { xpos, ypos, rotate } = calculateSlidePosition(newPosition);
 			slide.style.transform = `translate3d(${xpos}px, ${ypos}px, 0) rotate(${-rotate}deg)`;
 
-			slide.offsetHeight;
+			// slide.offsetHeight();
 			requestAnimationFrame(() => {
 				slide.classList.remove('notransition');
 				slide.style.visibility = 'visible';
@@ -145,47 +144,16 @@
 
 	function updateCurrentIndex(value) {
 		if (isAnimating) return;
-
 		isAnimating = true;
 		currentIndex = (currentIndex + value + numberOfSlides) % numberOfSlides;
 		setSliderPosition();
-
 		setTimeout(() => {
 			isAnimating = false;
 		}, 150);
 	}
 
-	onMount(() => {
-		if (imageArray.length >= MINIMUM_AMOUNT_OF_IMAGES) {
-			resizeObserver = new ResizeObserver((entries) => {
-				const entry = entries[0];
-				if (!entry) return;
-
-				vw = entry.contentRect.width;
-				vh = entry.contentRect.height;
-				divider = vw >= 960 ? 2.3 : 1.4;
-				slideWidth = vw / divider;
-				setSliderPosition();
-			});
-
-			resizeObserver.observe(document.documentElement);
-			startAutoplay();
-		}
-	});
-
-	onDestroy(() => {
-		resizeObserver?.unobserve(document.documentElement);
-		stopAutoplay();
-
-		if (rafId) {
-			cancelAnimationFrame(rafId);
-			rafId = null;
-		}
-	});
-
 	function grabStartHandler(event) {
 		if (isAnimating) return;
-
 		event.preventDefault();
 		isDragging = true;
 		startPos = getPositionX(event);
@@ -197,12 +165,10 @@
 		pauseAutoplay();
 	}
 
-	function grabEndHandler(event) {
+	function grabEndHandler() {
 		if (!isDragging) return;
-
 		const dragDuration = Date.now() - dragStartTime;
 		let ratio = movedBy / slideWidth;
-
 		isDragging = false;
 
 		const hasSignificantVelocity = Math.abs(velocity) > VELOCITY_THRESHOLD;
@@ -222,14 +188,12 @@
 
 	function handleMove(event) {
 		if (!isDragging) return;
-
 		const now = performance.now();
 		if (now - lastMoveTime < RAF_THROTTLE) return;
 
 		const currentX = getPositionX(event);
 		const deltaX = currentX - lastPosition;
 		const deltaTime = now - lastMoveTime;
-
 		velocity = deltaTime > 0 ? (deltaX / deltaTime) * 16.67 : 0;
 
 		const rawMovedBy = currentX - startPos;
@@ -281,25 +245,55 @@
 			resumeAutoplay();
 		}
 	}
+
+	onMount(() => {
+		if (imageArray.length >= MINIMUM_AMOUNT_OF_IMAGES) {
+			resizeObserver = new ResizeObserver((entries) => {
+				const entry = entries[0];
+				if (!entry) return;
+				vw = entry.contentRect.width;
+				vh = entry.contentRect.height;
+				divider = vw >= 960 ? 2.3 : 1.4;
+				slideWidth = vw / divider;
+				setSliderPosition();
+			});
+			resizeObserver.observe(document.documentElement);
+			startAutoplay();
+		}
+	});
+
+	onDestroy(() => {
+		resizeObserver?.unobserve(document.documentElement);
+		stopAutoplay();
+		if (rafId) {
+			cancelAnimationFrame(rafId);
+			rafId = null;
+		}
+	});
 </script>
 
-<div
+<section
 	class="relative top-0 left-0 z-0 flex h-screen w-screen items-center justify-center overflow-hidden pb-4 transition-transform duration-500 ease-out"
 	bind:clientWidth={vw}
 	bind:clientHeight={vh}
 	bind:this={sliderContainer}
-	on:mousedown={grabStartHandler}
-	on:mouseup={grabEndHandler}
-	on:mousemove={handleMove}
-	on:mouseleave={handleContainerMouseLeave}
 	on:mouseenter={handleContainerMouseEnter}
-	role="region"
-	aria-label="Image carousel"
+	on:mouseleave={handleContainerMouseLeave}
+	aria-label="Interactive image carousel - use arrow keys to navigate"
+	aria-live="polite"
+	aria-atomic="false"
 	style="user-select: none; -webkit-user-select: none; touch-action: pan-y;"
 >
 	{#if imageArray.length >= MINIMUM_AMOUNT_OF_IMAGES}
-		<div class="relative z-0 flex h-full w-full origin-center items-center">
-			<div class="absolute top-1/2 left-4 z-[10000] -translate-y-1/2 scale-110">
+		<button
+			class="relative z-0 flex h-full w-full origin-center cursor-default items-center"
+			aria-label="Draggable image carousel"
+			tabindex="0"
+			on:mousedown={grabStartHandler}
+			on:mouseup={grabEndHandler}
+			on:mousemove={handleMove}
+		>
+			<div class="absolute top-1/2 left-4 z-10000 -translate-y-1/2 scale-110">
 				<button
 					class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-none bg-black/50 text-white backdrop-blur-sm transition-all duration-200 ease-out hover:scale-110 hover:bg-black/70 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
 					on:click={handlePrevious}
@@ -310,7 +304,7 @@
 				</button>
 			</div>
 
-			<div class="absolute top-1/2 right-4 z-[10000] -translate-y-1/2 scale-110">
+			<div class="absolute top-1/2 right-4 z-10000 -translate-y-1/2 scale-110">
 				<button
 					class="flex h-12 w-12 cursor-pointer items-center justify-center rounded-full border-none bg-black/50 text-white backdrop-blur-sm transition-all duration-200 ease-out hover:scale-110 hover:bg-black/70 active:scale-95 disabled:cursor-not-allowed disabled:opacity-50"
 					on:click={handleNext}
@@ -327,45 +321,42 @@
 					bind:this={imageArray[index].slide}
 				>
 					<div class="pointer-events-auto relative origin-center select-none">
-						<img
-							src={image.src}
-							alt={image.alt}
+						<button
+							class="m-0 block border-none bg-transparent p-0"
 							style="width: {slideWidth}px;"
-							class="h-auto max-h-full w-auto max-w-full scale-100 transform-gpu cursor-grab rounded object-cover shadow-[5px_5px_50px_-1px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out backface-hidden {isDragging
-								? 'cursor-grabbing transition-none'
-								: ''}"
-							role="button"
-							tabindex="0"
-							aria-label="Drag to navigate carousel or click to open link"
+							aria-label="Open {image.alt} in new tab"
 							on:click={(e) => handleImageClick(e, index)}
 							on:touchstart={grabStartHandler}
 							on:touchend={grabEndHandler}
 							on:touchmove={handleMove}
-							on:keydown={(e) => {
-								if (e.key === 'ArrowLeft') handlePrevious();
-								if (e.key === 'ArrowRight') handleNext();
-								if (e.key === 'Enter' || e.key === ' ') {
-									window.open(imageArray[index].href, '_blank');
-								}
-							}}
-							on:dragstart|preventDefault
-						/>
+						>
+							<img
+								src={image.src}
+								alt={image.alt}
+								class="h-auto max-h-full w-auto max-w-full scale-100 transform-gpu cursor-grab rounded object-cover shadow-[5px_5px_50px_-1px_rgba(0,0,0,0.3)] transition-all duration-300 ease-out backface-hidden {isDragging
+									? 'cursor-grabbing transition-none'
+									: ''}"
+								on:dragstart|preventDefault
+								draggable="false"
+							/>
+						</button>
 					</div>
 				</div>
 			{/each}
 
-			<div class="absolute bottom-8 left-0 h-[120px] w-full overflow-hidden">
+			<div class="absolute bottom-8 left-0 h-30 w-full overflow-hidden">
 				<div class="static flex h-full items-center justify-center">
 					{#if currentActive || currentActive === 0}
 						{#key currentActive}
 							<a
-								class="absolute inline-block rounded-xl px-3 py-1 text-center text-[clamp(1rem,1rem+2.2vw,2.6rem)] leading-[0.85] text-blue-600 no-underline backdrop-blur-sm transition-all duration-200 ease-out hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300"
+								class="absolute font-semibold inline-block rounded-xl px-3 py-1 text-center text-[clamp(1rem,1rem+2.2vw,2.6rem)] leading-[0.85] text-blue-600 no-underline backdrop-blur-sm transition-all duration-200 ease-out hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:cursor-pointer dark:hover:cursor-pointer"
 								href={imageArray[currentActive].href}
 								target="_blank"
 								rel="noopener noreferrer"
 								bind:clientHeight={captionHeight}
 								in:fly={{ y: captionHeight, duration: 300 }}
 								out:fly={{ y: -captionHeight, duration: 300 }}
+								aria-describedby="carousel-status"
 							>
 								{imageArray[currentActive].caption}
 							</a>
@@ -373,9 +364,13 @@
 					{/if}
 				</div>
 			</div>
-		</div>
+
+			<div id="carousel-status" class="sr-only" aria-live="polite">
+				Image {currentIndex + 1} of {numberOfSlides}
+			</div>
+		</button>
 	{:else}
-		<div class="mx-auto w-[85vw] max-w-[600px]">
+		<div class="mx-auto w-[85vw] max-w-150">
 			<div
 				class="rounded-lg border border-gray-200 bg-white p-8 shadow-[0_4px_12px_rgba(0,0,0,0.1)]"
 			>
@@ -397,6 +392,7 @@
 									alt={image.alt}
 									class="h-20 w-full object-cover"
 									on:dragstart|preventDefault
+									draggable="false"
 								/>
 							</a>
 						</li>
@@ -405,7 +401,7 @@
 			</div>
 		</div>
 	{/if}
-</div>
+</section>
 
 <style>
 	.notransition {
@@ -422,6 +418,18 @@
 	.backface-hidden {
 		backface-visibility: hidden;
 		-webkit-backface-visibility: hidden;
+	}
+
+	.sr-only {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		padding: 0;
+		margin: -1px;
+		overflow: hidden;
+		clip: rect(0, 0, 0, 0);
+		white-space: nowrap;
+		border: 0;
 	}
 
 	@media (prefers-reduced-motion: reduce) {

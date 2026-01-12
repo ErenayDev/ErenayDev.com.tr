@@ -3,7 +3,8 @@ import { defineConfig } from 'vite';
 import devtoolsJson from 'vite-plugin-devtools-json';
 import tailwindcss from '@tailwindcss/vite';
 
-export default defineConfig(({ mode }) => {
+/** @type import ('vite').UserConfig */
+export default defineConfig(() => {
 	const plugins = [
 		tailwindcss(),
 		sveltekit(),
@@ -12,27 +13,8 @@ export default defineConfig(({ mode }) => {
 		})
 	];
 
-	if (mode === 'development') {
-		import('vite-plugin-inspect')
-			.then(({ default: inspect }) => {
-				plugins.push(inspect());
-			})
-			.catch(() => {
-				console.log('vite-plugin-inspect not available');
-			});
-	}
-
-	if (mode === 'analyze') {
-		import('vite-bundle-analyzer')
-			.then(({ default: bundleAnalyzer }) => {
-				plugins.push(bundleAnalyzer());
-			})
-			.catch(() => {
-				console.log('vite-bundle-analyzer not available');
-			});
-	}
-
 	return {
+		cache: true,
 		plugins,
 		optimizeDeps: {
 			include: ['clsx', 'tailwind-merge', '@tabler/icons-svelte', 'bits-ui'],
@@ -62,10 +44,6 @@ export default defineConfig(({ mode }) => {
 			fs: {
 				allow: ['..']
 			}
-		},
-		experimental: {
-			enableNativePlugin: true
-		},
-		esbuild: false
+		}
 	};
 });

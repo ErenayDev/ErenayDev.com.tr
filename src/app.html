@@ -2,18 +2,178 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- SEO Meta Tags -->
+		<meta
+			name="description"
+			content="Erenay - Full Stack Developer specializing in modern web technologies. Portfolio showcasing innovative projects and technical expertise."
+		/>
+		<meta
+			name="keywords"
+			content="full stack developer, web developer, portfolio, javascript, typescript, svelte, react, node.js"
+		/>
+		<meta name="author" content="Erenay" />
+		<meta name="robots" content="index, follow" />
+
+		<!-- Open Graph Protocol -->
+		<meta property="og:type" content="website" />
+		<meta property="og:site_name" content="Erenay Portfolio" />
+		<meta property="og:title" content="Erenay - Full Stack Developer Portfolio" />
+		<meta
+			property="og:description"
+			content="Portfolio showcasing full stack development projects, technical skills, and innovative solutions in modern web technologies."
+		/>
+		<meta property="og:url" content="https://erenaydev.com.tr" />
+		<meta property="og:image" content="https://erenaydev.com.tr/seo/og-image.jpg" />
+		<meta property="og:image:type" content="image/jpeg" />
+		<meta property="og:image:width" content="1200" />
+		<meta property="og:image:height" content="630" />
+		<meta property="og:image:alt" content="Erenay - Full Stack Developer" />
+		<meta property="og:locale" content="en_US" />
+
+		<!-- Twitter Card -->
+		<meta name="twitter:card" content="summary_large_image" />
+		<meta name="twitter:title" content="Erenay - Full Stack Developer Portfolio" />
+		<meta
+			name="twitter:description"
+			content="Portfolio showcasing full stack development projects and technical expertise."
+		/>
+		<meta name="twitter:image" content="https://erenaydev.com.tr/seo/twitter-card.jpg" />
+		<meta name="twitter:image:alt" content="Erenay Portfolio Preview" />
+
+		<!-- Favicons - Complete Package -->
+		<link rel="icon" type="image/x-icon" href="%sveltekit.assets%/favicon.ico" />
+		<link rel="icon" type="image/png" sizes="16x16" href="%sveltekit.assets%/favicon-16x16.png" />
+		<link rel="icon" type="image/png" sizes="32x32" href="%sveltekit.assets%/favicon-32x32.png" />
+		<link rel="icon" type="image/png" sizes="48x48" href="%sveltekit.assets%/favicon-48x48.png" />
+		<link rel="icon" type="image/png" sizes="64x64" href="%sveltekit.assets%/favicon-64x64.png" />
+		<link rel="icon" type="image/png" sizes="96x96" href="%sveltekit.assets%/favicon-96x96.png" />
+
+		<!-- Apple Touch Icons - All sizes -->
+		<link
+			rel="apple-touch-icon"
+			sizes="57x57"
+			href="%sveltekit.assets%/apple-touch-icon-57x57.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="60x60"
+			href="%sveltekit.assets%/apple-touch-icon-60x60.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="68x68"
+			href="%sveltekit.assets%/apple-touch-icon-68x68.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="72x72"
+			href="%sveltekit.assets%/apple-touch-icon-72x72.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="76x76"
+			href="%sveltekit.assets%/apple-touch-icon-76x76.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="114x114"
+			href="%sveltekit.assets%/apple-touch-icon-114x114.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="120x120"
+			href="%sveltekit.assets%/apple-touch-icon-120x120.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="144x144"
+			href="%sveltekit.assets%/apple-touch-icon-144x144.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="152x152"
+			href="%sveltekit.assets%/apple-touch-icon-152x152.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="167x167"
+			href="%sveltekit.assets%/apple-touch-icon-167x167.png"
+		/>
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="%sveltekit.assets%/apple-touch-icon-180x180.png"
+		/>
+
+		<!-- Android Icons -->
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="192x192"
+			href="%sveltekit.assets%/android-chrome-192x192.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="512x512"
+			href="%sveltekit.assets%/android-chrome-512x512.png"
+		/>
+
+		<!-- PWA Manifest -->
+		<link rel="manifest" href="%sveltekit.assets%/site.webmanifest" />
+
+		<!-- Microsoft Tiles - All sizes -->
+		<meta name="msapplication-TileColor" content="#0f172a" />
+		<meta name="msapplication-square70x70logo" content="%sveltekit.assets%/mstile-70x70.png" />
+		<meta name="msapplication-TileImage" content="%sveltekit.assets%/mstile-144x144.png" />
+		<meta name="msapplication-square150x150logo" content="%sveltekit.assets%/mstile-150x150.png" />
+		<meta name="msapplication-wide310x150logo" content="%sveltekit.assets%/mstile-310x310.png" />
+		<meta name="msapplication-config" content="%sveltekit.assets%/browserconfig.xml" />
+
+		<!-- Theme Colors -->
+		<meta name="theme-color" content="#0f172a" />
+
+		<!-- Canonical URL -->
+		<link rel="canonical" href="https://erenaydev.com.tr" />
+
+		<!-- Fonts -->
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-		<title>Erenay</title>
 		<link
 			href="https://fonts.googleapis.com/css2?family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Golos+Text:wght@400..900&display=swap"
 			rel="stylesheet"
 		/>
 		<link href="https://fonts.cdnfonts.com/css/sifonn" rel="stylesheet" />
+		<link href="https://fonts.cdnfonts.com/css/sf-pro-display" rel="stylesheet" />
 
+		<!-- Styles -->
 		<link href="/styles/loadingBox.css" rel="stylesheet" />
+
+		<!-- Schema.org JSON-LD -->
+		<script type="application/ld+json">
+			{
+				"@context": "https://schema.org",
+				"@type": "Person",
+				"name": "Erenay",
+				"jobTitle": "Full Stack Developer",
+				"url": "https://erenaydev.com.tr",
+				"sameAs": ["https://github.com/ErenayFC"],
+				"knowsAbout": [
+					"JavaScript",
+					"TypeScript",
+					"Svelte",
+					"React",
+					"Node.js",
+					"Full Stack Development"
+				],
+				"image": "https://erenaydev.com.tr/seo/profile.jpg",
+				"description": "Full Stack Developer specializing in modern web technologies and innovative solutions"
+			}
+		</script>
+
+		<!-- Dynamic Title Script -->
 		<script>
 			document.addEventListener('visibilitychange', function () {
 				if (document.hidden) {
@@ -26,13 +186,11 @@
 				}
 			});
 		</script>
-		<script
-			defer
-			src="https://cloud.umami.is/script.js"
-			data-website-id="13e876e4-6839-4ffe-9cc4-aa42ac9b65b3"
-		></script>
 
+		<!-- Page-specific head content -->
 		%sveltekit.head%
+
+		<title>Erenay</title>
 	</head>
 	<body data-sveltekit-preload-data="hover" class="dark bg-slate-200 dark:bg-slate-950">
 		<div style="display: contents">%sveltekit.body%</div>

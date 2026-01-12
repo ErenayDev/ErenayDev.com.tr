@@ -1,26 +1,47 @@
-<script>
+<script lang="ts">
 	import { Meteors } from '$lib/components/effects/Meteors';
 	import { Motion } from 'svelte-motion';
 	import items from './items.json';
-	import { Button } from '$lib/components/common/Button';
+	import type { AnimationConfig } from '$lib/stores/performance';
+
+	export let animationConfig: AnimationConfig | null = null;
+
+	$: canUseMotion =
+		animationConfig?.enabled && (animationConfig?.tier === 'H' || animationConfig?.tier === 'M');
+	$: canUseComplexAnimations = animationConfig?.enabled && animationConfig?.tier === 'H';
+	$: canUseMeteors = animationConfig?.enabled;
 </script>
 
 <div class="relative mt-16">
-	<Motion
-		initial={{ x: -100, opacity: 0 }}
-		animate={{ x: 100, opacity: 1 }}
-		transition={{ duration: 0.6 }}
-		let:motion
-	>
-		<h2 use:motion class="mb-4 text-2xl font-bold md:text-7xl dark:text-white">
+	{#if canUseMotion}
+		<Motion
+			initial={{ x: -100, opacity: 0 }}
+			animate={{ x: 0, opacity: 1 }}
+			transition={{
+				duration: canUseComplexAnimations ? 0.6 : 0.3
+			}}
+			let:motion
+		>
+			<h2 use:motion class="mb-4 text-center text-2xl font-bold md:text-7xl dark:text-white">
+				I am Junior, <br />Full-Stack Developer
+			</h2>
+		</Motion>
+	{:else}
+		<h2 class="mb-4 text-center text-2xl font-bold md:text-7xl dark:text-white">
 			I am Junior, <br />Full-Stack Developer
 		</h2>
-	</Motion>
+	{/if}
+
 	<div
 		class="mx-8 grid grid-cols-1 items-stretch justify-center gap-8 px-4 sm:grid-cols-2 sm:gap-8 lg:mx-24 lg:grid-cols-3 lg:gap-8"
 	>
 		{#each items as item, index (index)}
-			<div class="animate-border-rotate bg-conic-border w-full rounded-lg p-px">
+			<div
+				class="w-full rounded-lg"
+				class:animate-border-rotate={canUseComplexAnimations}
+				class:bg-conic-border={canUseComplexAnimations}
+				class:p-px={canUseComplexAnimations}
+			>
 				<div class="relative h-full w-full overflow-hidden rounded-lg bg-gray-900 dark:bg-gray-900">
 					<div
 						class="absolute inset-0 h-full w-full scale-[0.80] transform rounded-full blur-3xl"
@@ -56,10 +77,14 @@
 						>
 							{item.description}
 						</p>
-						<Button variant="outline" class="border-muted dark:border-muted dark:bg-transparent">
+						<!--<Button variant="cool">
 							{item.buttonText}
-						</Button>
-						<Meteors number={10} />
+							</Button>-->
+						{#if canUseMeteors}
+							<Meteors
+								number={animationConfig?.tier === 'H' ? 12 : animationConfig?.tier === 'M' ? 6 : 3}
+							/>
+						{/if}
 					</div>
 				</div>
 			</div>

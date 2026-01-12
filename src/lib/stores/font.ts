@@ -8,7 +8,7 @@ const map: Record<FontKey, string> = {
 	cascadia: "'Cascadia Code', system-ui, -apple-system, sans-serif",
 	system: "system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial",
 	sanfrancisco:
-		"-apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial",
+		"'SF Pro Display', -apple-system, BlinkMacSystemFont, 'San Francisco', 'Helvetica Neue', Helvetica, Arial",
 	golos: "'Golos Text', Georgia, 'Times New Roman', serif",
 	sifonn: "'Sifonn', Georgia, 'Times New Roman', serif"
 };

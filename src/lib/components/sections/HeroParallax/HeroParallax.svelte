@@ -29,7 +29,7 @@
 
 <div
 	bind:this={ref}
-	class="relative flex flex-col self-auto overflow-hidden py-4 antialiased [perspective:1000px] [transform-style:preserve-3d]"
+	class="relative flex flex-col self-auto overflow-hidden py-4 antialiased perspective:1000px transform-style:preserve-3d"
 >
 	<div class="container">
 		<Motion
@@ -62,7 +62,7 @@
 			opacity
 		}}
 	>
-		<div use:motion class="mt-10">
+		<div use:motion class="mt-2">
 			<Motion let:motion>
 				<div use:motion class="mb-20 flex flex-row-reverse space-x-20 space-x-reverse">
 					{#each firstRow as product (product.title)}

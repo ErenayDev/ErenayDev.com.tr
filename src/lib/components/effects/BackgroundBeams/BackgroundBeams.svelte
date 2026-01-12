@@ -23,7 +23,7 @@
 		private frameCount: number = 0;
 		private fpsTime: number = 0;
 		private currentFPS: number = 0;
-		private resizeObserver!: ResizeObserver;
+		private resizeObserver: ResizeObserver | null = null;
 		private isDestroyed: boolean = false;
 		private fpsLogInterval: number = 0;
 
@@ -54,10 +54,13 @@
 			updateSize();
 
 			this.resizeObserver = new ResizeObserver(() => {
-				updateSize();
+				if (!this.isDestroyed) {
+					updateSize();
+				}
 			});
 
-			this.resizeObserver.observe(this.canvas.parentElement || this.canvas);
+			const observeTarget = this.canvas.parentElement || this.canvas;
+			this.resizeObserver.observe(observeTarget);
 		}
 
 		private startFPSLogging(): void {
@@ -69,9 +72,8 @@
 		}
 
 		private initializeMeteors(): void {
-			const meteorCount = 12;
+			const meteorCount = 8;
 			this.meteors = [];
-
 			for (let i = 0; i < meteorCount; i++) {
 				this.meteors.push(this.createMeteor());
 			}
@@ -90,7 +92,6 @@
 
 		private createMeteor(): Meteor {
 			const canvasWidth = this.canvas.width / (window.devicePixelRatio || 1);
-
 			return {
 				x: Math.random() * canvasWidth,
 				y: -50,
@@ -143,7 +144,6 @@
 			this.ctx.strokeStyle = gradient;
 			this.ctx.lineWidth = 2;
 			this.ctx.lineCap = 'round';
-
 			this.ctx.beginPath();
 			this.ctx.moveTo(meteor.x, meteor.y);
 			this.ctx.lineTo(
@@ -165,7 +165,6 @@
 
 		private updateFPS(currentTime: number): void {
 			this.frameCount++;
-
 			if (currentTime - this.fpsTime >= 1000) {
 				this.currentFPS = Math.round((this.frameCount * 1000) / (currentTime - this.fpsTime));
 				this.frameCount = 0;
@@ -195,6 +194,7 @@
 		};
 
 		public start(): void {
+			if (this.isDestroyed) return;
 			this.lastTime = performance.now();
 			this.fpsTime = this.lastTime;
 			this.animate(this.lastTime);
@@ -205,28 +205,38 @@
 
 			if (this.animationId) {
 				cancelAnimationFrame(this.animationId);
+				this.animationId = 0;
 			}
 
 			if (this.resizeObserver) {
 				this.resizeObserver.disconnect();
+				this.resizeObserver = null;
 			}
 
 			if (this.fpsLogInterval) {
 				clearInterval(this.fpsLogInterval);
+				this.fpsLogInterval = 0;
 			}
+
+			this.meteors = [];
 		}
 	}
 
 	let canvas: HTMLCanvasElement;
-	let meteorSystem: MeteorSystem;
+	let meteorSystem: MeteorSystem | null = null;
 
 	onMount(() => {
-		meteorSystem = new MeteorSystem(canvas);
-		meteorSystem.start();
+		if (canvas) {
+			meteorSystem = new MeteorSystem(canvas);
+			meteorSystem.start();
+		}
 	});
 
 	onDestroy(() => {
-		meteorSystem?.stop();
+		if (meteorSystem) {
+			meteorSystem.stop();
+			meteorSystem = null;
+		}
 	});
 </script>
 

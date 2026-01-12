@@ -17,13 +17,13 @@
 		y: -20
 	}}
 >
-	<div use:motion class="group product-card relative h-96 w-[30rem] flex-shrink-0">
+	<div use:motion class="group product-card relative h-96 w-120 shrink-0">
 		<a href={product.link} class="block group-hover:shadow-2xl" target="_blank">
 			<img
 				src={product.thumbnail}
 				height="600"
 				width="600"
-				class="absolute inset-0 h-full w-full object-cover object-left-top"
+				class="absolute inset-0 h-full w-full object-cover object-top-left"
 				alt={product.title}
 			/>
 		</a>
