@@ -42,16 +42,14 @@
 	}
 
 	export interface AnchorElementProps
-		extends ButtonPropsWithoutHTML,
-			Omit<HTMLAnchorAttributes, 'href' | 'type'> {
+		extends ButtonPropsWithoutHTML, Omit<HTMLAnchorAttributes, 'href' | 'type'> {
 		href: HTMLAnchorAttributes['href'];
 		type?: never;
 		disabled?: HTMLButtonAttributes['disabled'];
 	}
 
 	export interface ButtonElementProps
-		extends ButtonPropsWithoutHTML,
-			Omit<HTMLButtonAttributes, 'type' | 'href'> {
+		extends ButtonPropsWithoutHTML, Omit<HTMLButtonAttributes, 'type' | 'href'> {
 		type?: HTMLButtonAttributes['type'];
 		href?: never;
 		disabled?: HTMLButtonAttributes['disabled'];
