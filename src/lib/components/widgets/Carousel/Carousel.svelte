@@ -349,7 +349,7 @@
 					{#if currentActive || currentActive === 0}
 						{#key currentActive}
 							<a
-								class="absolute font-semibold inline-block rounded-xl px-3 py-1 text-center text-[clamp(1rem,1rem+2.2vw,2.6rem)] leading-[0.85] text-blue-600 no-underline backdrop-blur-sm transition-all duration-200 ease-out hover:text-blue-800 dark:text-blue-400 dark:hover:text-blue-300 hover:cursor-pointer dark:hover:cursor-pointer"
+								class="linkify absolute inline-block cursor-pointer rounded-xl px-3 py-1 text-center text-[clamp(1rem,1rem+2.2vw,2.6rem)] leading-[0.85] font-semibold no-underline backdrop-blur-sm transition-all duration-200 ease-out"
 								href={imageArray[currentActive].href}
 								target="_blank"
 								rel="noopener noreferrer"
