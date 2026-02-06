@@ -1,15 +1,15 @@
 [
 	{
 		"id": 1,
-		"title": "Cheat Site",
-		"link": "https://cheat.erenaydev.com.tr",
-		"thumbnail": "/products/cheatsite.png"
-	},
-	{
-		"id": 2,
 		"title": "Arginels",
 		"link": "https://arginels.com",
 		"thumbnail": "/products/arginels.png"
+	},
+	{
+		"id": 2,
+		"title": "CDN Server + Loadbalancer",
+		"link": "https://github.com/ErenayDev/cdn-server",
+		"thumbnail": "/products/cdn-server.png"
 	},
 	{
 		"id": 3,
@@ -23,5 +23,17 @@
 		"title": "Checkpoint.ts",
 		"link": "https://github.com/ErenayDev/checkpoint-ts",
 		"thumbnail": "/products/checkpointts.png"
+	},
+	{
+		"id": 5,
+		"title": "ErenayDev.com.tr",
+		"link": "https://github.com/ErenayDev/ErenayDev.com.tr",
+		"thumbnail": "/seo/og-image.jpg"
+	},
+	{
+		"id": 6,
+		"title": "Rust CLI Template",
+		"link": "https://github.com/ErenayDev/rust-cli-template",
+		"thumbnail": "/products/rust-cli-template.png"
 	}
 ]
