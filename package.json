@@ -1,6 +1,6 @@
 {
-	"name": "erenaydev2",
-	"version": "0.0.2",
+	"name": "erenaydev.com.tr",
+	"version": "0.0.3",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
@@ -21,9 +21,9 @@
 		"eslint-config-prettier": "^9.1.2",
 		"eslint-plugin-svelte": "^2.46.1",
 		"globals": "^15.15.0",
-		"prettier": "^3.7.4",
+		"prettier": "^3.8.1",
 		"prettier-plugin-svelte": "^3.4.1",
-		"prettier-plugin-tailwindcss": "^0.6.14",
+		"prettier-plugin-tailwindcss": "^0.7.2",
 		"svelte": "^4.2.20",
 		"svelte-check": "^4.3.5",
 		"svelte-copyright": "^2.1.0",
