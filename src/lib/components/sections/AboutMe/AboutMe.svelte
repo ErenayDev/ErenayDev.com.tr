@@ -23,17 +23,21 @@
 			let:motion
 		>
 			<h2 use:motion class="mb-4 text-center text-2xl font-bold md:text-7xl dark:text-white">
-				I am Junior, <br />Full-Stack Developer
+				I&apos;m Full-Stack Developer.
+				<br />
+				<span class="text-sm">not junior dev, but not senior dev too</span>
 			</h2>
 		</Motion>
 	{:else}
 		<h2 class="mb-4 text-center text-2xl font-bold md:text-7xl dark:text-white">
-			I am Junior, <br />Full-Stack Developer
+			I&apos;m Full-Stack Developer
+			<br />
+			<span class="text-sm">not junior dev, but not senior dev too</span>
 		</h2>
 	{/if}
 
 	<div
-		class="mx-8 grid grid-cols-1 items-stretch justify-center gap-8 px-4 sm:grid-cols-2 sm:gap-8 lg:mx-24 lg:grid-cols-3 lg:gap-8"
+		class="mx-8 grid grid-cols-1 items-stretch justify-center gap-8 px-4 sm:grid-cols-2 lg:mx-24 lg:grid-cols-3"
 	>
 		{#each items as item, index (index)}
 			<div

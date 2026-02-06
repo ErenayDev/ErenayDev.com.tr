@@ -1,3 +1,4 @@
+<!-- not using anymore -->
 <script lang="ts">
 	export let products: {
 		title: string;
@@ -29,7 +30,7 @@
 
 <div
 	bind:this={ref}
-	class="relative flex flex-col self-auto overflow-hidden py-4 antialiased perspective:1000px transform-style:preserve-3d"
+	class="perspective:1000px transform-style:preserve-3d relative flex flex-col self-auto overflow-hidden py-4 antialiased"
 >
 	<div class="container">
 		<Motion
