@@ -43,7 +43,7 @@
 		"bits-ui": "^0.21.16",
 		"clsx": "^2.1.1",
 		"dotenv": "^17.2.3",
-		"locomotive-scroll": "^4.1.4",
+		"locomotive-scroll": "^5.0.0",
 		"svelte-inview": "^4.0.4",
 		"svelte-motion": "^0.12.2",
 		"svelte-sonner": "0.3.28",
