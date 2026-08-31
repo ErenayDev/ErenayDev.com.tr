@@ -18,7 +18,7 @@
 		"@types/eslint": "^9.6.1",
 		"@types/locomotive-scroll": "^4.1.4",
 		"eslint": "^9.39.2",
-		"eslint-config-prettier": "^9.1.2",
+		"eslint-config-prettier": "^10.0.0",
 		"eslint-plugin-svelte": "^2.46.1",
 		"globals": "^15.15.0",
 		"prettier": "^3.8.1",
