@@ -1,37 +1,49 @@
 [
 	{
 		"id": 1,
-		"title": "Arginels",
-		"link": "https://arginels.com",
-		"thumbnail": "/products/arginels.png"
+		"title": "solenoid",
+		"link": "https://codeberg.org/Erenay/solenoid",
+		"thumbnail": "/products/solenoid.png"
 	},
 	{
 		"id": 2,
+		"title": "pencere",
+		"link": "https://codeberg.org/Erenay/pencere",
+		"thumbnail": "/products/pencere.png"
+	},
+	{
+		"id": 3,
+		"title": "VitePlus + Svelte",
+		"link": "https://github.com/ErenayDev/viteplus-svelte",
+		"thumbnail": "/products/viteplus-svelte.png"
+	},
+	{
+		"id": 4,
 		"title": "CDN Server + Loadbalancer",
 		"link": "https://github.com/ErenayDev/cdn-server",
 		"thumbnail": "/products/cdn-server.png"
 	},
 	{
-		"id": 3,
-		"title": "Cachefetch",
+		"id": 5,
+		"title": "cachefetch",
 		"link": "https://github.com/ErenayDev/cachefetch",
 		"thumbnail": "/products/cachefetch.png"
 	},
 
 	{
-		"id": 4,
-		"title": "Checkpoint.ts",
+		"id": 6,
+		"title": "checkpoint.ts",
 		"link": "https://github.com/ErenayDev/checkpoint-ts",
 		"thumbnail": "/products/checkpointts.png"
 	},
 	{
-		"id": 5,
+		"id": 7,
 		"title": "ErenayDev.com.tr",
 		"link": "https://github.com/ErenayDev/ErenayDev.com.tr",
 		"thumbnail": "/seo/og-image.jpg"
 	},
 	{
-		"id": 6,
+		"id": 8,
 		"title": "Rust CLI Template",
 		"link": "https://github.com/ErenayDev/rust-cli-template",
 		"thumbnail": "/products/rust-cli-template.png"
