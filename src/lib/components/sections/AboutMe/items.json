@@ -1,0 +1,32 @@
+[
+	{
+		"title": "Svelte",
+		"description": "using every project since stopped writing in React/Next.js in 2025-Q2",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "JavaScript / TypeScript",
+		"description": "mostly create CLI tools, scripts, and using in web applications",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "Zig",
+		"description": "I spend my days with Zig. its awesome!!",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "Rust",
+		"description": "I wrote some CLI tools in Rust. but currently im not using",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "DevOps & Infrastructure",
+		"description": "Mostly using Docker for self-hosting somethings",
+		"buttonText": "Explore"
+	},
+	{
+		"title": "Git & Version Control",
+		"description": "https://xkcd.com/1597/",
+		"buttonText": "Explore"
+	}
+]

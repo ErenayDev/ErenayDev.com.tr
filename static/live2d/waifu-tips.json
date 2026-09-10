@@ -1,0 +1,464 @@
+{
+	"mouseover": [
+		{
+			"selector": "#waifu-tool-hitokoto",
+			"text": ["Guess what I'm about to say?", "I heard some life wisdom from the Frog Prince."]
+		},
+		{
+			"selector": "#waifu-tool-asteroids",
+			"text": [
+				"Want to play airplane battle?",
+				"This button says 'Don't click'.",
+				"What, you want to play a game with me?",
+				"I heard this can make you dance!"
+			]
+		},
+		{
+			"selector": "#waifu-tool-switch-model",
+			"text": [
+				"Don't you love me anymore? Woo woo woo~",
+				"Want to meet my sister?",
+				"Want to see my little sister?",
+				"Want to switch the mascot?"
+			]
+		},
+		{
+			"selector": "#waifu-tool-switch-texture",
+			"text": [
+				"Like dress-up play?",
+				"What role should I play this time?",
+				"Transform!",
+				"Let's see what happens next!"
+			]
+		},
+		{
+			"selector": "#waifu-tool-photo",
+			"text": [
+				"You want to take a photo of me? One, two, three~ Cheese~",
+				"How about we take a selfie together!",
+				"Just keep smiling~"
+			]
+		},
+		{
+			"selector": "#waifu-tool-info",
+			"text": [
+				"Want to know more about me?",
+				"This records my moving history.",
+				"What do you want to know about me?"
+			]
+		},
+		{
+			"selector": "#waifu-tool-quit",
+			"text": [
+				"Is it time to say goodbye?",
+				"Woo woo QAQ see you later...",
+				"Don't abandon me...",
+				"Will we... meet again...",
+				"Hmph, you'll regret this!"
+			]
+		},
+		{
+			"selector": ".menu-item-home a",
+			"text": [
+				"Click to go to homepage. You can use browser's back button to return to previous page.",
+				"Click here to go back to homepage!",
+				"Let's go back to homepage."
+			]
+		},
+		{
+			"selector": ".menu-item-about a",
+			"text": [
+				"Want to know who my master is?",
+				"There are some secrets about my master here, want to take a look?",
+				"Discover master's whereabouts!"
+			]
+		},
+		{
+			"selector": ".menu-item-tags a",
+			"text": ["Click to see article tags!", "Click to view all tags."]
+		},
+		{
+			"selector": ".menu-item-categories a",
+			"text": ["Articles are all categorized~", "Click to view article categories."]
+		},
+		{
+			"selector": ".menu-item-archives a",
+			"text": [
+				"Is page turning troublesome? Then check out the article archives.",
+				"All article directories are organized here!"
+			]
+		},
+		{
+			"selector": ".menu-item-friends a",
+			"text": [
+				"These are my friends ヾ(◍°∇°◍)ﾉﾞ",
+				"Want to visit the masters' homes?",
+				"Want to visit my friends?"
+			]
+		},
+		{
+			"selector": ".menu-item-search a",
+			"text": [
+				"Can't find what you want to read? Try searching!",
+				"What are you looking for? Need help?"
+			]
+		},
+		{
+			"selector": ".menu-item a",
+			"text": ["Let's see what's here!"]
+		},
+		{
+			"selector": ".site-author",
+			"text": ["Is my master handsome?", "This is my master (*´∇｀*)"]
+		},
+		{
+			"selector": ".site-state",
+			"text": ["This is article statistics~", "Want to click and see?"]
+		},
+		{
+			"selector": ".feed-link a",
+			"text": [
+				"You can use RSS subscription here!",
+				"Using feed reader, you can quickly know if the blog is updated."
+			]
+		},
+		{
+			"selector": ".cc-opacity, .post-copyright-author",
+			"text": [
+				"Remember to follow reposting rules.",
+				"All articles use CC BY-NC-SA 4.0 license~",
+				"Pay attention to article copyright before reposting."
+			]
+		},
+		{
+			"selector": ".links-of-author",
+			"text": ["This is master's permanent address.", "Here are master's contact details!"]
+		},
+		{
+			"selector": ".followme",
+			"text": [
+				"Scan with your phone to continue reading, very convenient~",
+				"Scan to open the door to a new world!"
+			]
+		},
+		{
+			"selector": ".fancybox img, img.medium-zoom-image",
+			"text": ["Click image to enlarge!"]
+		},
+		{
+			"selector": ".copy-btn",
+			"text": ["Code can be copied directly."]
+		},
+		{
+			"selector": ".highlight .table-container, .gist",
+			"text": ["GitHub! I'm a newbie!", "Rust is the best language!"]
+		},
+		{
+			"selector": "a[href^='/tags/']",
+			"text": [
+				"Want to check out <span>{text}</span> tag?",
+				"Click to view all articles under this tag!"
+			]
+		},
+		{
+			"selector": "a[href^='/categories/']",
+			"text": [
+				"Want to check out <span>{text}</span> category?",
+				"Click to view all articles under this category!"
+			]
+		},
+		{
+			"selector": ".post-title-link",
+			"text": ["Want to read <span>{text}</span> this article?"]
+		},
+		{
+			"selector": "a[rel='contents']",
+			"text": ["Click to read full text."]
+		},
+		{
+			"selector": "a[itemprop='discussionUrl']",
+			"text": ["Want to check out comments?"]
+		},
+		{
+			"selector": ".beian a",
+			"text": ["I'm also a registered citizen.", "My master is a law-abiding good master."]
+		},
+		{
+			"selector": ".container a[href^='http'], .nav-link .nav-text",
+			"text": [
+				"Want to check out <span>{text}</span>?",
+				"Go browse <span>{text}</span>.",
+				"Go take a look at <span>{text}</span>."
+			]
+		},
+		{
+			"selector": ".back-to-top",
+			"text": [
+				"Click to go back to top!",
+				"Back to the starting point~",
+				"Want to go back to the beginning?"
+			]
+		},
+		{
+			"selector": ".reward-container",
+			"text": [
+				"Am I awesome~ Give me a like!",
+				"Want to tip me? So excited~",
+				"Master has been working hard lately, show some support~"
+			]
+		},
+		{
+			"selector": "#needsharebutton-postbottom .btn",
+			"text": [
+				"Good things should be shared with more people.",
+				"If the article is helpful, you can share it with more friends in need."
+			]
+		},
+		{
+			"selector": ".post-nav-item a[rel='next']",
+			"text": [
+				"Let's read the next article.",
+				"Click to see next article!",
+				"Want to flip to next article?"
+			]
+		},
+		{
+			"selector": ".post-nav-item a[rel='prev']",
+			"text": [
+				"Let's read the previous article.",
+				"Click to see previous article!",
+				"Want to flip to previous article?"
+			]
+		},
+		{
+			"selector": ".extend.next",
+			"text": ["Go to next page.", "Click to move forward!", "Want to flip to next page?"]
+		},
+		{
+			"selector": ".extend.prev",
+			"text": ["Go to previous page.", "Click to go back!", "Want to flip to previous page?"]
+		},
+		{
+			"selector": "input.vnick",
+			"text": ["What should I call you?", "Leave your name!"]
+		},
+		{
+			"selector": ".vlink",
+			"text": ["Tell me where your website is, so I can visit!"]
+		},
+		{
+			"selector": ".veditor",
+			"text": [
+				"Want to comment something?",
+				"Want to say something?",
+				"Think the blog is good? Come leave a message and chat with master!"
+			]
+		},
+		{
+			"selector": ".vcontrol a",
+			"text": [
+				"Are you skilled at using Markdown?",
+				"Use Markdown to make comments more beautiful~"
+			]
+		},
+		{
+			"selector": ".vemoji-btn",
+			"text": ["Want to insert a cute emoji?", "Want an emoji?"]
+		},
+		{
+			"selector": ".vpreview-btn",
+			"text": ["Want to preview your comment?", "Let's see how your comment looks!"]
+		},
+		{
+			"selector": ".vsubmit",
+			"text": [
+				"Comments are not moderated, be responsible for your words~",
+				"Ready to submit? Please wait patiently for reply~"
+			]
+		},
+		{
+			"selector": ".vcontent",
+			"text": [
+				"Wow, look at this wonderful comment!",
+				"If you have questions, please leave a message soon~"
+			]
+		}
+	],
+	"click": [
+		{
+			"selector": ".veditor",
+			"text": ["What do you want to say?", "Must fill it out carefully~", "Got something to share?"]
+		},
+		{
+			"selector": ".vsubmit",
+			"text": ["Enter verification code to submit comment~"]
+		}
+	],
+	"seasons": [
+		{
+			"date": "01/01",
+			"text": "It's <span>New Year's Day</span>, a new year has begun, this is {year}~"
+		},
+		{
+			"date": "03/08",
+			"text": "Today is <span>International Women's Day</span>!"
+		},
+		{
+			"date": "03/12",
+			"text": "Today is <span>Arbor Day</span>, we must protect the environment!"
+		},
+		{
+			"date": "04/01",
+			"text": "Let me tell you a secret~ <span>Today is April Fool's Day, don't get fooled~</span>"
+		},
+		{
+			"date": "05/01",
+			"text": "Today is <span>May Day Labor Day</span>, have you planned where to go for the holiday~"
+		},
+		{
+			"date": "06/01",
+			"text": "It's <span>Children's Day</span>, happy times are always short, how nice it would be to never grow up..."
+		},
+		{
+			"date": "09/10",
+			"text": "<span>Teachers' Day</span>, remember to greet your teachers at school~"
+		},
+		{
+			"date": "10/01",
+			"text": "<span>National Day</span> is here, celebrating our motherland's birthday!"
+		},
+		{
+			"date": "12/20-12/31",
+			"text": "These days are <span>Christmas</span>, the festive season is here~"
+		}
+	],
+	"time": [
+		{
+			"hour": "6-7",
+			"text": "Good morning! The day's plan starts in the morning, a beautiful day is about to begin~"
+		},
+		{
+			"hour": "8-11",
+			"text": "Good morning! Is work going smoothly? Don't sit too long, get up and walk around!"
+		},
+		{
+			"hour": "12-13",
+			"text": "It's noon, after working all morning, now it's lunch time!"
+		},
+		{
+			"hour": "14-17",
+			"text": "It's easy to get sleepy in the afternoon, have you completed today's exercise goal?"
+		},
+		{
+			"hour": "18-19",
+			"text": "It's evening! The sunset outside the window is beautiful, nothing is more beautiful than the setting sun~"
+		},
+		{
+			"hour": "20-21",
+			"text": "Good evening, how was your day?"
+		},
+		{
+			"hour": "22-23",
+			"text": [
+				"It's already so late, get some rest early, good night~",
+				"Take care of your eyes during late night!"
+			]
+		},
+		{
+			"hour": "0-5",
+			"text": "Are you a night owl? Still not sleeping this late, can you get up tomorrow?"
+		}
+	],
+	"message": {
+		"default": [
+			"Long time no see, time flies so fast...",
+			"Hello there! How long has it been since you visited~",
+			"Hi~ come play with me!",
+			"Welcome back!",
+			"Remember to bookmark this place!"
+		],
+		"console": "Haha, you opened the console, want to see my little secrets?",
+		"copy": "What did you copy? Remember to add source when reposting!",
+		"visibilitychange": "Wow, you're finally back~",
+		"changeSuccess": "Do you like my new clothes?",
+		"changeFail": "I don't have other clothes yet!",
+		"photo": "Did you take a good photo? Isn't it cute?",
+		"goodbye": "May you have a wonderful day ahead.",
+		"hitokoto": "This quote comes from <span>「$1」</span>",
+		"welcome": "Welcome to read <span>「$1」</span>",
+		"referrer": "Hello! Friend from <span>$1</span>",
+		"hoverBody": [
+			"What are you doing, please don't do that~~",
+			"Hey, that's not the right place!",
+			"What do you want to do?",
+			"Meow meow meow?",
+			"Please don't touch me!",
+			"That tickles!",
+			"Please be gentle!",
+			"I'm a bit shy~"
+		],
+		"tapBody": [
+			[
+				"Please be careful with your clicks~",
+				"That was an accident, right?",
+				"Did you see my little accessory?",
+				"Please don't click randomly!",
+				"I'm just a virtual character!",
+				"Be nice to me!",
+				"What are you trying to do?",
+				"Please treat me with respect!"
+			]
+		]
+	},
+	"models": [
+		{
+			"name": "White Cat",
+			"paths": [
+				"https://cdn.jsdelivr.net/gh/evrstr/live2d-widget-models/live2d_evrstr/whitecat/model.json"
+			],
+			"message": "Meow~"
+		},
+		{
+			"name": "Hatsune Miku",
+			"paths": ["/live2d/waifus/mikuuuu/21miku_normal_3.0_f_t06.model3.json"],
+			"message": "Miku Miku~"
+		},
+		{
+			"name": "Potion-Maker/Tia",
+			"paths": ["https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/Potion-Maker/Tia/index.json"],
+			"message": "Tia from Potion Maker ~"
+		},
+		{
+			"name": "HyperdimensionNeptunia",
+			"paths": [
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/neptune_classic/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepnep/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/neptune_santa/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepmaid/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepswim/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noir_classic/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noir/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noir_santa/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/noireswim/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/blanc_classic/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/blanc_normal/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/blanc_swimwear/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/vert_classic/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/vert_normal/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/vert_swimwear/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepgear/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepgear_extra/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/nepgearswim/index.json",
+				"https://cdn.jsdelivr.net/gh/fghrsh/live2d_api/model/HyperdimensionNeptunia/histoire/index.json"
+			],
+			"message": "Nep! Nep! Hyperdimension Neptunia series"
+		},
+		{
+			"name": "Hiyori",
+			"paths": [
+				"https://cdn.jsdelivr.net/gh/Live2D/CubismWebSamples/Samples/Resources/Hiyori/Hiyori.model3.json"
+			],
+			"message": "It's Hiyori ~"
+		}
+	]
+}
